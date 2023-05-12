@@ -17,13 +17,13 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("https://emotioapi.onrender.com/auth/login", {
+      const res = await axios.post("/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       console.log(res.data)
-      res.data && window.location.replace("https://emotioapi.onrender.com/write");
+      res.data && window.location.replace("/write");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
